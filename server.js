@@ -2,6 +2,7 @@ var express=require('express');
 var hbs=require('hbs');
 var app=express();
 var fs=require('fs');
+var port = process.env.PORT || 3004;
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getCurrentYear',()=>{
     return new Date().getFullYear()
@@ -40,4 +41,6 @@ app.get('/about',(req,res)=>{
     });
 });
 
-app.listen(3002);
+app.listen(port, ()=>{
+    console.log(`Server is up at port ${port}`);
+});
